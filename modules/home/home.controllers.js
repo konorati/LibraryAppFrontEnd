@@ -7,4 +7,5 @@ angular.module('Home')
     function ($scope, $rootScope) {
         $scope.username = $rootScope.globals.currentUser.username;
         $scope.role = $rootScope.globals.currentUser.role;
+        $scope.isUser = ($scope.role === "USER");
     }]);

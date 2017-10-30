@@ -10,15 +10,9 @@ angular.module('app', [
     'Home',
     'ngRoute',
     'ngCookies',
-    'Books'
+    'Books',
+    'ngGrid'
 ])
-.controller("AppController", function($scope) {
-    $scope.navigation = true; // default visibility state
-
-    $scope.showNavigation = function(show) {
-        $scope.navigation = show;
-    };
-}) 
         
 
 .config(['$routeProvider', function ($routeProvider) {
@@ -46,9 +40,6 @@ angular.module('app', [
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-        }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in

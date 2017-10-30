@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+
+    <h1>Books</h1>
+    <div ng-repeat="book in books" class="row">
+        <div class="col-md-3">{{book.title}}</div>
+        <div class="col-md-3">
+            <button ng-click="checkoutBook(book)" class="btn" ng-if="!book.username && role === 'PATRON'">Checkout Book</button>
+            <button ng-click="returnBook(book)" class="btn" ng-if="book.username === username && role === 'PATRON'">Return Book</button>
+            <button ng-click="deleteBook(book)" class="btn" ng-if="role === 'LIBRARIAN'">Delete Book</button>
+        </div>
+    </div>

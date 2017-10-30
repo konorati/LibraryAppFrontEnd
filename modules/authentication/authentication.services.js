@@ -3,8 +3,8 @@
 angular.module('Authentication')
 
 .factory('AuthenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$q',
-    function (Base64, $http, $cookieStore, $rootScope, $q) {
+    ['Base64', '$http', '$cookieStore', '$rootScope',
+    function (Base64, $http, $cookieStore, $rootScope) {
         var service = {};
 
         service.Login = function (username, password, callback) {
@@ -22,8 +22,6 @@ angular.module('Authentication')
                 return callback(res, false);
             }
             
-            /* Dummy authentication for testing
-             ----------------------------------------------*/
             $http.get('http://localhost:4567/api/users?username='+username+'&&password='+password)
                     .then(handleSuccess, handleError);
         };
